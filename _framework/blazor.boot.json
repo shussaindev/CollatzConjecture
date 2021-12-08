@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "CollatzConjecture.Web.dll": "sha256-7qfpkwZUWD+0Bv4ZlYCDrnz74ELiw4yUYw7ZtISmKxM=",
+      "CollatzConjecture.Web.dll": "sha256-EXKCs1X8PAoMnXqw8H4lbLM9PVKGZoDt0dQO3EoJNZA=",
       "Microsoft.AspNetCore.Components.dll": "sha256-FIr+xzOkHKZO52TAxWb2euQejd4J1ccT9g\/CFEtK4IY=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-S\/8AxVN8mycg07KwFAeYgPxiM7zzNZv9tfWBxmvJe00=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-ROecNxRjjqOHJNDAmTqqBIVBV8Fx04rYehi7kHwQeg4=",
