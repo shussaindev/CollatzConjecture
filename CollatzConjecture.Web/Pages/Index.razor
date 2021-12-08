@@ -1,8 +1,79 @@
 ﻿@page "/"
+@using System.Text
+@using System.Numerics
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="card">
+    <div class="card-header">
+        <h3 class="mb-0">Collatz Conjecture</h3>
+    </div>
+    <div class="card-body">
+        <div class="d-flex align-items-center justify-content-center">
+            <span>Initial number:</span>
 
-Welcome to your new app.
+            <input class="ms-2 form-control form-control-sm"
+                   style="max-width: 264px;"
+                   @bind="initialNo"/>
 
+            <button type="button"
+                    class="btn btn-outline-primary ms-2 btn-sm px-3 "
+                    @onclick="DoCollatz">Go</button>
+        </div>
+
+        <div>
+            <span>Iterations</span>
+            <br/>
+            <textarea cols="44" 
+                rows="20"
+                class="form-control form-control-sm" 
+                style="background-color: white;"
+                readonly
+                @bind="textareaOutput"></textarea>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    string initialNo;
+    BigInteger iterationNo;
+    BigInteger finalNo;
+    string textareaOutput;
+    
+    void DoCollatz()
+    {
+        if (string.IsNullOrEmpty(initialNo) ||
+            !BigInteger.TryParse(initialNo, out var parsedInitialNo) ||
+            parsedInitialNo < 2)
+        {
+            textareaOutput = "You must enter an integer greater than 1 inside the text box.";
+            return;
+        }
+
+        iterationNo = 0;
+        
+        var builder = new StringBuilder();
+        builder.AppendLine("Initial number = " + initialNo);
+
+        finalNo = parsedInitialNo;
+
+        while (finalNo != 1)
+        {
+            if (finalNo % 2 == 1)
+            {
+                finalNo = (finalNo * 3) + 1;
+                builder.AppendLine(iterationNo + 1 + ". " + finalNo);
+            }
+            else
+            {
+                finalNo /= 2;
+                builder.AppendLine(iterationNo + 1 + ". " + finalNo);
+            }
+            
+            iterationNo++;
+            textareaOutput = builder.ToString();
+        }
+    }
+
+}
